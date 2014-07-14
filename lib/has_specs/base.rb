@@ -8,7 +8,7 @@ module HasSpecs
           basename =  File.basename file, config.extension
           spec_file = File.join(spec_dir,basename+config.suffix+config.extension)
           unless config.ignore.include?(File.basename file) || File.exist?(spec_file)
-            raise MatchingSpecFileDoesNotExist, "#{spec_file} does not exist for #{file}"
+            raise MatchingSpecFileDoesNotExist, "\n#{spec_file} does not exist for #{file}"
           end
         end
       end
