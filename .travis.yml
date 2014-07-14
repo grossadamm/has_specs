@@ -4,4 +4,4 @@ rvm:
   - 2.1.1
   - 2.1.2
 install: bundle
-script: "bundle exec rake clean spec"
+script: "bundle exec rspec"
