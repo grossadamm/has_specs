@@ -1,5 +1,7 @@
 # HasSpecs
 
+[![Build Status](https://travis-ci.org/grossadamm/has_specs.svg?branch=master)](https://travis-ci.org/grossadamm/has_specs)
+
 Very basic gem that allows you to verify that every file in your project has a matching spec or test file.
 
 It expects that the folder structure of the root directory and spec directory be identical, so it's fairly limited in the fact that it doesn't look at rails route or lib tests.
