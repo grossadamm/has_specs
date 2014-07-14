@@ -1,6 +1,8 @@
 # HasSpecs
 
-Very basic gem that allows you to verify that every file in your project has a matching spec file. 
+Very basic gem that allows you to verify that every file in your project has a matching spec or test file.
+
+It expects that the folder structure of the root directory and spec directory be identical, so it's fairly limited in the fact that it doesn't look at rails route or lib tests.
 
 ## Installation
 
@@ -41,6 +43,14 @@ configuration.suffix << '_spec'
 configuration.root = 'some/other/root/for/source/files'
 configuration.spec_root = 'some/other/root/for/tests'
 ```
+
+#### Rails Defaults
+
+ * Sets the root to be the app directory
+ * Excludes the assets directory
+ * Sets the suffix to _spec
+
+
 
 ## Contributing
 
