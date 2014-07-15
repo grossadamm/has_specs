@@ -25,11 +25,11 @@ Or install it yourself as:
 ## Usage
 
 ```
-  # spec_helper.rb
+  # spec_helper.rb (or rails_helper.rb)
 
   require 'has_specs'
-  
-  # ...
+
+  # ... in the config block
 
   HasSpecs.configuration.use_rails_defaults
   HasSpecs.ignore << 'application_controller.rb'

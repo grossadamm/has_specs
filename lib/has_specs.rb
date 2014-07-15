@@ -4,11 +4,13 @@ require 'has_specs/rails_defaults'
 require 'has_specs/base'
 
 module HasSpecs
-  class MatchingSpecFileDoesNotExist < StandardError;   end 
+  class MatchingSpecFileDoesNotExist < StandardError;   end
 
   class << self
     def verify
+      puts "\n######################\nHasSpecs Missing Specs:\n"
       HasSpecs::Base.verify (self.configuration)
+      puts "\n######################\n\n"
     end
 
     def configuration
