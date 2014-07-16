@@ -43,7 +43,7 @@ describe HasSpecs::Configuration do
   end
 
   it "has an extension of .rb" do
-    expect(@config.extension).to eq '.rb'
+    expect(@config.extension).to eq ['.rb']
   end
 
   it "lists included directories" do

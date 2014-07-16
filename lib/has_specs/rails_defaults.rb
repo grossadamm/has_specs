@@ -14,5 +14,9 @@ module HasSpecs
     def self.suffix
       "_spec"
     end
+
+    def self.extension
+      [".rb", ".erb", ".jbuilder"]
+    end
   end
 end

@@ -41,7 +41,7 @@ module HasSpecs
     end
 
     def extension
-      ".rb"
+      [".rb"]
     end
 
     def include
