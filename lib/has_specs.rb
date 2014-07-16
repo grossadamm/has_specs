@@ -8,9 +8,12 @@ module HasSpecs
 
   class << self
     def verify
-      puts "\n######################\nHasSpecs Missing Specs:\n"
-      HasSpecs::Base.verify (self.configuration)
-      puts "\n######################\n\n"
+      missing = HasSpecs::Base.verify (self.configuration)
+      if missing != [] 
+        puts "\n######################\nHasSpecs Missing Specs:\n"
+        puts join(missing,"\n")
+        puts "\n######################\n\n"
+      end
     end
 
     def configuration

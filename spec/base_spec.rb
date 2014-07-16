@@ -1,14 +1,16 @@
 require 'has_specs'
 
 describe HasSpecs do
-  it "throws no exceptions if all files have a matching spec" do
-    HasSpecs.root = File.join(Dir.pwd,'lib','has_specs')
-    HasSpecs.ignore << "version.rb"
-    HasSpecs.verify
+  it "returns an empty array if all files have a matching spec" do
+    config = HasSpecs::Configuration.new
+    config.root = File.join(Dir.pwd,'lib','has_specs')
+    config.ignore << "version.rb"
+    expect(HasSpecs::Base.verify(config)).to eq []
   end
 
-  it "throws an exception if any files are missing a matching spec" do
-    HasSpecs.root = Dir.pwd
-    expect{HasSpecs.verify}.to raise_error
+  it "prints messages if any files are missing a matching spec" do
+    config = HasSpecs::Configuration.new
+    config.root = Dir.pwd
+    expect(HasSpecs::Base.verify(config)).to include 'base_spec.rb'
   end
 end
