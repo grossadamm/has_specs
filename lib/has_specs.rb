@@ -1,6 +1,5 @@
 require "has_specs/version"
 require "has_specs/configuration"
-require 'has_specs/rails_defaults'
 require 'has_specs/base'
 
 module HasSpecs
@@ -9,10 +8,9 @@ module HasSpecs
   class << self
     def verify
       missing = HasSpecs::Base.verify(self.configuration)
-      puts missing.inspect
       if missing != [] 
         puts "\n######################\nHasSpecs Missing Specs:\n"
-        puts join(missing,"\n")
+        puts missing.join("\n")
         puts "\n######################\n\n"
       end
     end

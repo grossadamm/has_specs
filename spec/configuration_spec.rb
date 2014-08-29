@@ -24,7 +24,7 @@ describe HasSpecs::Configuration do
   end
 
   it "defaults to excluding the specs dir" do
-    expect(@config.exclude).to eq ['spec']
+    expect(@config.exclude).to eq ['spec', 'assets']
     expect(@config.include).not_to include('spec')
   end
 
@@ -43,26 +43,11 @@ describe HasSpecs::Configuration do
   end
 
   it "has an extension of .rb" do
-    expect(@config.extension).to eq ['.rb']
+    expect(@config.extension).to eq ['.rb', '.erb', '.jbuilder']
   end
 
   it "lists included directories" do
     @config.root = Dir.pwd
     expect(@config.include).to include('lib')
   end
-
-  it "can use the rails defaults" do
-    fake_rails_class = Class.new do
-      def self.root
-        'fake_rails_root'
-      end
-    end
-    stub_const("Rails",fake_rails_class)
-
-    @config.use_rails_defaults
-   
-    expect(@config.exclude).to include File.join('assets')
-    expect(@config.root).to include 'app'
-    expect(@config.suffix).to eq '_spec'
-  end    
 end

@@ -31,7 +31,6 @@ Or install it yourself as:
 
   # ... in the config block
 
-  HasSpecs.configuration.use_rails_defaults
   HasSpecs.ignore << 'application_controller.rb'
   HasSpecs.verify
 ```
@@ -47,13 +46,6 @@ configuration.suffix << '_spec'
 configuration.root = 'some/other/root/for/source/files'
 configuration.spec_root = 'some/other/root/for/tests'
 ```
-
-#### Rails Defaults
-
- * Sets the root to be the app directory
- * Excludes the assets directory
- * Sets the suffix to _spec
-
 
 
 ## Contributing

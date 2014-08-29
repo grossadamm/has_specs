@@ -8,10 +8,10 @@ module HasSpecs
           spec_dir = File.dirname(file).gsub(config.root, config.spec_root)
           extension = File.extname(file)
           basename =  File.basename(file).chomp(extension)
-          spec_file = File.join(spec_dir,basename+config.suffix+extension)
-          spec_output = File.join(basename+config.suffix+extension)
+          spec = config.to_spec_filename(file)
+          spec_file = File.join(spec_dir,spec)
           unless config.ignore.include?(File.basename file) || File.exist?(spec_file)
-            missing.push(spec_output)
+            missing.push(spec)
           end
         end
       end

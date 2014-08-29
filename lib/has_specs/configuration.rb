@@ -5,7 +5,11 @@ module HasSpecs
     end
 
     def root
-      @root ||= Dir.pwd
+      if defined? Rails
+        @root ||= File.join(::Rails.root,'app')
+      else
+       @root ||= Dir.pwd
+     end
     end
 
     def spec_root=(desired_root)
@@ -16,12 +20,12 @@ module HasSpecs
       @spec_root ||= File.join(Dir.pwd,'spec')
     end
 
-    def exclude=(exclude_dirs)
-      @exclude = exclude_dirs
+    def exclude
+      @exclude ||= ['spec', 'assets']
     end
 
-    def exclude
-      @exclude ||= ['spec']
+    def exclude=(exclude_dirs)
+      @exclude = exclude_dirs
     end
 
     def ignore=(ignore_files)
@@ -41,7 +45,7 @@ module HasSpecs
     end
 
     def extension
-      [".rb"]
+      [".rb", ".erb", ".jbuilder"]
     end
 
     def include
@@ -50,17 +54,21 @@ module HasSpecs
         .delete_if do |directory|
           found = false
           self.exclude.each do |excluded|
-            continue if found
+            next if found
             found = directory.start_with?(excluded)
           end
           found
         end
     end
 
-    def use_rails_defaults
-      self.exclude.concat(HasSpecs::RailsDefaults.exclude)
-      self.root = HasSpecs::RailsDefaults.root
-      self.suffix = HasSpecs::RailsDefaults.suffix
+    def to_spec_filename(filename)
+      if File.extname(filename) != '.rb' 
+        filename = filename + suffix + ".rb"
+      else
+        extension = File.extname(filename)
+        basename = File.basename(filename, extension)
+        filename = basename + suffix + extension
+      end
     end
   end
 end
