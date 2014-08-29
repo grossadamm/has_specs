@@ -50,4 +50,18 @@ describe HasSpecs::Configuration do
     @config.root = Dir.pwd
     expect(@config.include).to include('lib')
   end
+
+  context "when determining the spec filename" do
+    it "adds _spec.rb to non-rb extensions" do
+      filename = "view.html.erb"
+
+      expect(@config.to_spec_filename(filename)).to eq "view.html.erb_spec.rb"
+    end
+
+    it "it adds _spec before .rb extensions" do
+      filename = "model.rb"      
+
+      expect(@config.to_spec_filename(filename)).to eq "model_spec.rb"
+    end
+  end
 end

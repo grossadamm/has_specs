@@ -11,6 +11,6 @@ describe HasSpecs do
   it "prints messages if any files are missing a matching spec" do
     config = HasSpecs::Configuration.new
     config.root = Dir.pwd
-    expect(HasSpecs::Base.verify(config)).to include 'base_spec.rb'
+    expect(HasSpecs::Base.verify(config)).to include File.join(Dir.pwd,'spec', 'lib', 'has_specs', 'base_spec.rb')
   end
 end

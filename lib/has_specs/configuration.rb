@@ -63,7 +63,7 @@ module HasSpecs
 
     def to_spec_filename(filename)
       if File.extname(filename) != '.rb' 
-        filename = filename + suffix + ".rb"
+        filename = File.basename(filename) + suffix + ".rb"
       else
         extension = File.extname(filename)
         basename = File.basename(filename, extension)

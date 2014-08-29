@@ -9,9 +9,11 @@ module HasSpecs
           extension = File.extname(file)
           basename =  File.basename(file).chomp(extension)
           spec = config.to_spec_filename(file)
+          p spec
+          p spec_dir
           spec_file = File.join(spec_dir,spec)
           unless config.ignore.include?(File.basename file) || File.exist?(spec_file)
-            missing.push(spec)
+            missing.push(spec_file)
           end
         end
       end
