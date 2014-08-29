@@ -38,7 +38,6 @@ Or install it yourself as:
 #### Configuration
 
 ```
-configuration.use_rails_defaults # sets up to use app/ as the root amoungst other things
 configuration.ignore << 'some_file_to_ignore.rb'
 configuration.exclude << 'some/whole/dir/to/exclude.rb'
 configuration.include << 'some/whole/dir/to/optionally/include'
